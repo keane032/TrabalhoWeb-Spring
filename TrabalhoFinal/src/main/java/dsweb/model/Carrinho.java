@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import java.io.Serializable;
 
 @Entity(name = "Carrinho")
@@ -21,6 +23,9 @@ public class Carrinho implements Serializable{
 	
 	@OneToMany
 	private List<Produto> itens;
+	
+	@OneToOne
+	private Cliente cliente;
 	
 	private Double total = 0.0;
 	

@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import dsweb.model.Endereco;
 
 @Entity(name="clientes")
 public class Cliente implements Serializable{
@@ -35,22 +36,26 @@ public class Cliente implements Serializable{
 	private String Senha;
 
 
-	@ManyToOne
-	@JoinColumn(name = "idEndereco")
-	private Endereco endereco;
-	
-	public Endereco getAddresses() {
-		return this.endereco;
-	}
+	@NotNull
+	@Size(min=5,max=50, message="O tamanho deve ser entre {min} e {max}")
+	private String endereco;
+//	@ManyToOne
+//	private Endereco endereco;
 
+	@OneToOne
+	private Carrinho carrinho;
+	
+	public Cliente() {
+		
+	}
 
 	public Integer getId() {
 		return id;
 	}
 
 
-	public void setId(int idCliente) {
-		this.id = idCliente;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 
@@ -82,7 +87,38 @@ public class Cliente implements Serializable{
 	public void setSenha(String senha) {
 		Senha = senha;
 	}
-	
+
+
+//	public Endereco getEndereco() {
+//		return endereco;
+//	}
+//
+//
+//	public void setEndereco(Endereco endereco) {
+//		this.endereco = endereco;
+//	}
+//
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Carrinho getCarrinho() {
+		return carrinho;
+	}
+
+	public void setCarrinho(Carrinho carrinho) {
+		this.carrinho = carrinho;
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
 	
 	
 	

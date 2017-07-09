@@ -30,11 +30,11 @@
 	<c:if test="${not empty clientes}">
 	<table id="tabela_contatos" class="table table-hover">
 		<thead>
-			<tr><th>Nome</th><th>Rua</th><th>Numero</th><th>Ação</th></tr>
+			<tr><th>Nome</th><th>Rua</th><th>Ação</th></tr>
 		</thead>
 		<tbody>
 		<c:forEach var="c" items="${clientes}">
-			<tr><td>${c.nome}</td></tr>
+			<tr><td>${c.nome}</td><td>${c.endereco}</td>
 			<td><a href="${url_base}altera_cliente_form/${c.id}" class="btn btn-primary">Altera</a>
 			<a href="${url_base}delete_cliente/${c.id}" class="btn btn-danger" onclick="return confirm('Confirma remoção?')" >Deleta</a>
 			</td>

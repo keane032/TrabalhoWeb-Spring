@@ -12,7 +12,7 @@ input[type=text], input[type=password] {
   
 }
 
-button {
+#logup button {
     background-color: #4CAF50;
     color: white;
     padding: 14px 20px;
@@ -46,9 +46,6 @@ img.avatar {
     border-radius: 50%;
 }
 
-.container {
-    padding: 16px;
-}
 
 span.psw {
     float: right;

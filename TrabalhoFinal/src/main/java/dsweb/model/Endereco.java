@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,6 +14,8 @@ import dsweb.model.Cliente;
 
 @Entity(name = "Endereco")
 public class Endereco implements Serializable{
+	
+	
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -25,39 +26,42 @@ public class Endereco implements Serializable{
 	private String Rua;
 	@NotNull 
 	@Size(min=5,max=50, message="O tamanho deve ser entre {min} e {max}")
-	private String numeCasa;
+	private String Num;	
+//	@OneToMany
+//	private Collection<Cliente> cliente;
+//	
+//	
+	public Endereco() {}
 	
 	
-	@OneToMany
-	@JoinColumn(name = "idcliente")
-	private Collection<Cliente> cliente;
 	
-	
-	public Integer getIdEndereco() {
+	public Integer getId() {
 		return idEndereco;
 	}
-	public void setIdEndereco(int idEndereco) {
+	public void setId(Integer idEndereco) {
 		this.idEndereco = idEndereco;
 	}
 	public String getRua() {
 		return Rua;
 	}
-	public void setrua(String nomeRua) {
-		this.Rua = nomeRua;
+	public void setRua(String rua) {
+		Rua = rua;
 	}
-	public String getNumeCasa() {
-		return numeCasa;
+	public String getNum() {
+		return Num;
 	}
-	public void setNumeCasa(String numeCasa) {
-		this.numeCasa = numeCasa;
+	public void setNum(String num) {
+		Num = num;
 	}
-	public Collection<Cliente> getCliente() {
-		return cliente;
+//	public Collection<Cliente> getCliente() {
+//		return cliente;
+//	}
+//	public void setCliente(Collection<Cliente> cliente) {
+//		this.cliente = cliente;
+//	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
-	public void setCliente(Collection<Cliente> cliente) {
-		this.cliente = cliente;
-	}
-	
-	
+		
 	
 }

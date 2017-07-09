@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
+<c:url var="url_base" value="/" />
 <link rel="stylesheet" href="${url_base}css/bootstrap.min.css">
 <link rel="stylesheet" href="${url_base}css/bootstrap.css">
 <link rel="stylesheet" href="${url_base}css/rodape.css">
@@ -14,7 +15,7 @@
 </head>
 <body>
 	
-	<c:import url="cabecalho.jsp"></c:import>
+	<c:import  url="cabecalho.jsp"></c:import>
 	
 	<form action="" id = "logup">
 		<div class="imgcontainer">

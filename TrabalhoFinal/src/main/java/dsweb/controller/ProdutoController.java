@@ -14,10 +14,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import dsweb.dao.ProdutoJpaDao;
 import dsweb.model.Produto;
+import dsweb.service.ProdutoService;
 
 @Controller
 public class ProdutoController {
 
+	@Autowired
+	private ProdutoService service;
 	@Autowired
 	private ProdutoJpaDao produtoDao;
 	
@@ -28,7 +31,7 @@ public class ProdutoController {
 	
 	@RequestMapping("/produtos")
 	public String listaProdutos(Model model) {
-		List<Produto> lista = produtoDao.getLista();
+		List<Produto> lista = (List<Produto>) service.ListAll();
 		model.addAttribute("produtos", lista);
 		return "lista_produtos";
 	}
@@ -48,7 +51,7 @@ public class ProdutoController {
 			model.addAttribute("acao", "/add_produto");
 			return "insere_produto";
 		}
-		produtoDao.adiciona(produto);
+		service.save(produto);
 		redirectAttributes.addFlashAttribute("msg", "Produto inserido com sucesso.");
 		return "redirect:/produtos";
 	}
@@ -56,7 +59,7 @@ public class ProdutoController {
 	@RequestMapping("/altera_produto_form/{id}")
 	public String alteraForm(@PathVariable Integer id, Model model) {
 		System.out.println("id: " + id);
-		Produto p = produtoDao.getProduto(id);
+		Produto p = service.getById(id);
 		System.out.println("produto: " + p);
 		model.addAttribute("produto", p);
 		model.addAttribute("acao", "/update_produto");
@@ -81,7 +84,7 @@ public class ProdutoController {
 		System.out.println("id: " + id);
 		Produto produto = new Produto(id);
 		System.out.println("produto: " + produto);
-		produtoDao.remove(produto);
+		service.dell(id);
 		redirectAttributes.addFlashAttribute("msg", "Produto removido com sucesso.");
 		return "redirect:/produtos";
 	}
